@@ -20,7 +20,7 @@ function getComputerChoice()  {
             getNumber = 'paper';
             break;
     }
-
+    console.log('Computer picks '  + getNumber);
     return getNumber;
 }
 
@@ -82,11 +82,13 @@ returns String “win/lose, x beats y”
 }
 */
 function gamePlay(){
-    var round =0;
+    var round = 0;
     for (let i = 0; i < 5; i++ ) {
+        console.log(`Round: ${++round}`);
         getComputerChoice();
         getUserChoice('Rock, Scissors, Paper?');
-        console.log(++round);
+        console.log("=========================" ) 
+        console.log(" \n" ) ;
     }
 }
 
