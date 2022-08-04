@@ -89,17 +89,21 @@ function playRound(playerSelection, computerSelection){
 
 // compare scores and declare winner
 function declareWinner(playerScore, computerScore){
+    var winMessage = "wins best of 5!"
+    
     if(playerScore > computerScore){
-        console.log('Player wins best of 5!');
+        console.log('Player ' + winMessage );
     }
+    
     else if (computerScore > playerScore) {
-        console.log('Computer wins best of 5!');
+        console.log('Computer ' + winMessage);
     }
+    
     else {
         console.log("It's a tie!");
     }
 
-    console.log(`Final Score: \n
+    console.log(`\n *** FINAL SCORE: *** 
     Player: ${playerScore}
     Computer: ${computerScore}`)
 }
@@ -113,12 +117,12 @@ function gamePlay(){
         
         let compChoice = getComputerChoice();
         let userChoice = getUserChoice('Rock, Scissors, Paper?');
-        console.log('Result: ');
+        console.log('\nResult: ');
         
         playRound(userChoice, compChoice);
-        console.log(`Current Score: \n
-                Player: ${playerScore}
-                Computer: ${computerScore}`)
+        console.log(`\n Scoreboard: 
+            Player: ${playerScore}
+            Computer: ${computerScore}`)
         console.log("=========================");
         console.log(" \n" );
     }
