@@ -79,7 +79,7 @@ function playRound(playerSelection, computerSelection){
             computerSelection == 'scissors' && playerSelection == 'paper' ||
             computerSelection == 'paper' && playerSelection == 'rock' ) {
                 console.log("Computer earns a point")
-                return  ++playerScore;
+                return  ++computerScore;
     }    
     //tie
     else {
@@ -98,6 +98,10 @@ function declareWinner(playerScore, computerScore){
     else {
         console.log("It's a tie!");
     }
+
+    console.log(`Final Score: \n
+    Player: ${playerScore}
+    Computer: ${computerScore}`)
 }
 
 //Run game
@@ -112,7 +116,9 @@ function gamePlay(){
         console.log('Result: ');
         
         playRound(userChoice, compChoice);
-
+        console.log(`Current Score: \n
+                Player: ${playerScore}
+                Computer: ${computerScore}`)
         console.log("=========================");
         console.log(" \n" );
     }
