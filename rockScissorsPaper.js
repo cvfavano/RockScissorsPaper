@@ -1,5 +1,7 @@
 var computerChoice;
 var playerChoice;
+var playerScore = 0;
+var computerScore = 0;
 
 //Generate random number and assign to computer choice
 function getComputerChoice()  {
@@ -61,35 +63,58 @@ function checkUserSelection(entry) {
 
 }
 
-/*
 
-FunctionPlayRound(playerSelection, computerSelection){
-compare choices
-    if( possibilities for player 1 for a win)
-         { player wins}
-        increment winning point for player
-
-    if (possibilities for comp to win)
-        {comp wins}
-        increment winning point for computer
-    Else 
-        tie
-
-incrementRound		
-
-increment scoreboard
-returns String “win/lose, x beats y”
+//compare choices of player vs computer
+function playRound(playerSelection, computerSelection){
+    // player 1 wins point
+    if( playerSelection == 'rock' && computerSelection == 'scissors' ||
+        playerSelection == 'scissors' && computerSelection == 'paper' ||
+        playerSelection == 'paper' && computerSelection == 'rock' ) {
+            console.log("Player 1 earns a point")
+            return  ++playerScore;
+    }
+    
+    //comp wins
+    else if (computerSelection == 'rock' && playerSelection == 'scissors' ||
+            computerSelection == 'scissors' && playerSelection == 'paper' ||
+            computerSelection == 'paper' && playerSelection == 'rock' ) {
+                console.log("Computer earns a point")
+                return  ++playerScore;
+    }    
+    //tie
+    else {
+        console.log("It's a tie!")
+    }
 }
-*/
+
+// compare scores and declare winner
+function declareWinner(playerScore, computerScore){
+    if(playerScore > computerScore){
+        console.log('Player wins best of 5!');
+    }
+    else {
+        console.log('Computer wins best of 5!');
+    }
+}
+
+//Run game
 function gamePlay(){
     var round = 0;
     for (let i = 0; i < 5; i++ ) {
+
         console.log(`Round: ${++round}`);
-        getComputerChoice();
-        getUserChoice('Rock, Scissors, Paper?');
-        console.log("=========================" ) 
-        console.log(" \n" ) ;
+        
+        let compChoice = getComputerChoice();
+        let userChoice = getUserChoice('Rock, Scissors, Paper?');
+        console.log('Result: ');
+        
+        playRound(userChoice, compChoice);
+
+        console.log("=========================");
+        console.log(" \n" );
     }
+
+    declareWinner(playerScore,computerScore);
 }
 
 
