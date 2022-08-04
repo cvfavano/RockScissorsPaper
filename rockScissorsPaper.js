@@ -24,25 +24,44 @@ function getComputerChoice()  {
     return getNumber;
 }
 
+//prompt user for choice
+function getUserChoice(question){
+    var keyEntry = prompt(question);
+    var entry = checkUserSelection(keyEntry);
+
+    console.log(`User picks ${entry}`);
+    return entry;
+}
+
+//check if user used whitespace, emptry string, or incorrect word
+function checkUserSelection(entry) {
+    let stringEntry = entry.toLowerCase().trim(); 
+    switch (stringEntry) {
+        case 'rock':
+         return 'rock';
+         break;
+
+        case 'paper':
+            return 'paper';
+            break;
+
+        case 'scissors':
+            return 'scissors';
+            break;
+
+        case '': 
+            return getUserChoice('Please reenter choice with rock, scissors or paper only');
+            break;
+
+        default:
+            return getUserChoice('Please reenter choice with rock, scissors or paper only');
+
+    }
+
+
+}
 
 /*
-
-if switch(GetNumber)
-1 computer choice is rock
-2 choice is paper
-3 computer chose is scissors
-
-Return computerChoice 
-
-returns computer choice Rock Paper Scissors 
-
-Function getUserChoice
-use prompt() to get user choice
-Check if rock scissors paper, case insensitive
-    else reprompt for correct input
-
-
-returns Rock paper Scissors
 
 FunctionPlayRound(playerSelection, computerSelection){
 compare choices
@@ -63,9 +82,11 @@ returns String “win/lose, x beats y”
 }
 */
 function gamePlay(){
+    var round =0;
     for (let i = 0; i < 5; i++ ) {
         getComputerChoice();
-
+        getUserChoice('Rock, Scissors, Paper?');
+        console.log(++round);
     }
 }
 
