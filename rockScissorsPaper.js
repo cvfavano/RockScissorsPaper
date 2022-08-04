@@ -92,8 +92,11 @@ function declareWinner(playerScore, computerScore){
     if(playerScore > computerScore){
         console.log('Player wins best of 5!');
     }
-    else {
+    else if (computerScore > playerScore) {
         console.log('Computer wins best of 5!');
+    }
+    else {
+        console.log("It's a tie!");
     }
 }
 
