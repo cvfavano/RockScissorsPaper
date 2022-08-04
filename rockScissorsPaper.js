@@ -1,8 +1,8 @@
-
+var computerChoice;
 var playerChoice;
 
-
-var computerChoice = () =>  {
+//Generate random number and assign to computer choice
+function getComputerChoice()  {
     let rock;
     let scissors;
     let paper;
@@ -20,13 +20,10 @@ var computerChoice = () =>  {
             getNumber = 'paper';
             break;
     }
-    console.log(getNumber);
+
     return getNumber;
 }
-function getReady(){
-    console.log(computerChoice);}
 
-    getReady();
 
 /*
 
@@ -64,12 +61,13 @@ incrementRound
 increment scoreboard
 returns String “win/lose, x beats y”
 }
+*/
+function gamePlay(){
+    for (let i = 0; i < 5; i++ ) {
+        getComputerChoice();
 
-gamePlay(){
-if rounds < 5
-    run comp Choice
-    run comp user choice
-    playRound
+    }
 }
 
-*/
+
+gamePlay();
