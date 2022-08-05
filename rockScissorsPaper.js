@@ -57,7 +57,7 @@ function checkUserSelection(entry) {
 
         default:
             getUserChoice('Please reenter choice with rock, scissors or paper only');
-
+            break;
     }
 
 
