@@ -16,7 +16,7 @@ function getComputerChoice()  {
             getNumber = 'rock';
             break
         case 2:
-            getNumber = 'scissors';
+            getNumber = 'scissors'; 
             break;
         case 3:
             getNumber = 'paper';
@@ -52,11 +52,11 @@ function checkUserSelection(entry) {
             break;
 
         case '': 
-            return getUserChoice('Please reenter choice with rock, scissors or paper only');
+            getUserChoice('Please reenter choice with rock, scissors or paper only');
             break;
 
         default:
-            return getUserChoice('Please reenter choice with rock, scissors or paper only');
+            getUserChoice('Please reenter choice with rock, scissors or paper only');
 
     }
 
