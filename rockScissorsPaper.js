@@ -30,14 +30,19 @@ function getComputerChoice()  {
 function getUserChoice(question){
     var keyEntry = prompt(question);
     var entry = checkUserSelection(keyEntry);
-
-    console.log(`User picks ${entry}`);
-    return entry;
+    
+    if (entry == null) { return;}
+    
+    else{
+        console.log(`User picks ${entry}`);
+        return entry;
+    }
 }
 
 //check if user used whitespace, emptry string, or incorrect word
 function checkUserSelection(entry) {
     
+    //user cancels out of prompt
     if(!entry) {
         return;
     }
@@ -122,6 +127,8 @@ function gamePlay(){
         
         let compChoice = getComputerChoice();
         let userChoice = getUserChoice('Rock, Scissors, Paper?');
+        
+        //user cancels out of prompt
         if(userChoice === undefined) {
             console.log("Player exited game");
             break;
@@ -136,9 +143,11 @@ function gamePlay(){
             console.log("=========================");
             console.log(" \n" ); 
         }
+        //declare wiiner after 5 rounds 
+        if(i === 5) {
+            declareWinner(playerScore,computerScore);
+        }
     }
-
-    declareWinner(playerScore,computerScore);
 }
 
 
