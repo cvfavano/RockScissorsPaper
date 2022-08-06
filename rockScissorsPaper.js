@@ -37,7 +37,12 @@ function getUserChoice(question){
 
 //check if user used whitespace, emptry string, or incorrect word
 function checkUserSelection(entry) {
+    
+    if(!entry) {
+        return;
+    }
     let stringEntry = entry.toLowerCase().trim(); 
+
     switch (stringEntry) {
         case 'rock':
          return 'rock';
@@ -117,14 +122,20 @@ function gamePlay(){
         
         let compChoice = getComputerChoice();
         let userChoice = getUserChoice('Rock, Scissors, Paper?');
-        console.log('\nResult: ');
+        if(userChoice === undefined) {
+            console.log("Player exited game");
+            break;
+        }
+        else {
+            console.log('\nResult: ');
         
-        playRound(userChoice, compChoice);
-        console.log(`\n Scoreboard: 
-            Player: ${playerScore}
-            Computer: ${computerScore}`)
-        console.log("=========================");
-        console.log(" \n" );
+            playRound(userChoice, compChoice);
+            console.log(`\n Scoreboard: 
+                Player: ${playerScore}
+                Computer: ${computerScore}`)
+            console.log("=========================");
+            console.log(" \n" ); 
+        }
     }
 
     declareWinner(playerScore,computerScore);
