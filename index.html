@@ -3,9 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <title>Rock Scissors Paper Game</title>
-    <script src="./rockScissorsPaper.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;700&family=Special+Elite&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css" >
+    <script src="./rockScissorsPaper.js" defer></script>
 </head>
 <body>
+    <div class="row">
+        <div class="container welcome">
+            <p>Welcome! Let's play</p>
+            <p>ROCK! SCISSORS! PAPER!</p>
+            <p>Are you ready?</p>
+        </div>
+        <div class="row">
+            <div class="container">
+                <div class="scoreboard">
+                    <p id="round">Current Round:</p>
+                    <p id="player">Player 1:</p>
+                    <p id="computer">Computer: </p>
+                </div>
+
+                <div class="gameboard">
+                    <div class="player-selection"></div>
+                    <div class="computer-selection"></div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="container">
+                <div class="options">
+                    <img src="./images/rock.png" alt="rock" width="150">
+                    <img src="./images/scissors.png" alt="scissors" width="150">
+                    <img src="./images/paper.png" alt="paper" width="150">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="container">
+                <div class="result">
+                    <p>The winner is: </p>
+                </div>
+            </div>
+        </div>
+    </div>
     
     
 </body>

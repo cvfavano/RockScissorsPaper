@@ -28,15 +28,16 @@ function getComputerChoice()  {
 
 //prompt user for choice
 function getUserChoice(question){
-    var keyEntry = prompt(question);
+  /*  var keyEntry = prompt(question);
     var entry = checkUserSelection(keyEntry);
     
-    if (entry == null) { return;}
+    if (entry == null) { return; }
     
     else{
         console.log(`User picks ${entry}`);
         return entry;
     }
+    */
 }
 
 //check if user used whitespace, emptry string, or incorrect word
@@ -69,8 +70,6 @@ function checkUserSelection(entry) {
             getUserChoice('Please reenter choice with rock, scissors or paper only');
             break;
     }
-
-
 }
 
 
@@ -149,6 +148,5 @@ function gamePlay(){
         }
     }
 }
-
 
 gamePlay();
