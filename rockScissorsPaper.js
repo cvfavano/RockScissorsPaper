@@ -2,6 +2,7 @@ var computerChoice;
 var playerChoice;
 var playerScore = 0;
 var computerScore = 0;
+var round = 0;
 
 //Generate random number and assign to computer choice
 function getComputerChoice()  {
@@ -26,22 +27,18 @@ function getComputerChoice()  {
     return getNumber;
 }
 
-//create listeners 
-
-function getUserChoice(){
+//create listeners with a callback to start game play
 
 var imgs = document.querySelectorAll('div.options img');
-//prompt user for choice
-console.log(imgs);
 
 imgs.forEach(img => img.addEventListener('click', (event) => {
-    console.log(event.target.id);
-            }));
-        }
-getUserChoice();
+        gamePlay(event.target.id);
+    })
+)
 
-/*
-        
+
+
+ /* can delete later       
 //check if user used whitespace, emptry string, or incorrect word
 function checkUserSelection(entry) {
     
@@ -74,7 +71,7 @@ function checkUserSelection(entry) {
     }
 }
 
-
+*/
 //compare choices of player vs computer
 
 function playRound(playerSelection, computerSelection){
@@ -117,27 +114,22 @@ function declareWinner(playerScore, computerScore){
 
     console.log(`\n *** FINAL SCORE: *** 
     Player: ${playerScore}
-    Computer: ${computerScore}`)
+    Computer: ${computerScore}`);
 }
 
 //Run game
 
 
-function gamePlay(){
-    var round = 0;
-    do{
-
+function gamePlay(choice){
+    
         console.log(`Round: ${++round}`);
-        
+        let userChoice = choice;
+        console.log(userChoice)
         let compChoice = getComputerChoice();
-        let userChoice =getUserChoice();
+       
         
         //user cancels out of prompt
-        if(userChoice === undefined) {
-            console.log("Player exited game");
-            break;
-        }
-        else {
+     
             console.log('\nResult: ');
         
             playRound(userChoice, compChoice);
@@ -146,14 +138,13 @@ function gamePlay(){
                 Computer: ${computerScore}`)
             console.log("=========================");
             console.log(" \n" ); 
-        }
-    }
-        //declare wiiner after 5 rounds 
-    while(i < 5);
-    declareWinner(playerScore,computerScore);
         
     
+        //declare wiiner after 5 rounds 
+   
+    if(playerScore == 5 || computerScore ==5) {
+    declareWinner(playerScore,computerScore);
+        
+    }
 }
 
-gamePlay();
-*/
