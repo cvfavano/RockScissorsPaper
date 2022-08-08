@@ -26,20 +26,22 @@ function getComputerChoice()  {
     return getNumber;
 }
 
-//prompt user for choice
-function getUserChoice(question){
-  /*  var keyEntry = prompt(question);
-    var entry = checkUserSelection(keyEntry);
-    
-    if (entry == null) { return; }
-    
-    else{
-        console.log(`User picks ${entry}`);
-        return entry;
-    }
-    */
-}
+//create listeners 
 
+function getUserChoice(){
+
+var imgs = document.querySelectorAll('div.options img');
+//prompt user for choice
+console.log(imgs);
+
+imgs.forEach(img => img.addEventListener('click', (event) => {
+    console.log(event.target.id);
+            }));
+        }
+getUserChoice();
+
+/*
+        
 //check if user used whitespace, emptry string, or incorrect word
 function checkUserSelection(entry) {
     
@@ -74,6 +76,7 @@ function checkUserSelection(entry) {
 
 
 //compare choices of player vs computer
+
 function playRound(playerSelection, computerSelection){
     // player 1 wins point
     if( playerSelection == 'rock' && computerSelection == 'scissors' ||
@@ -118,14 +121,16 @@ function declareWinner(playerScore, computerScore){
 }
 
 //Run game
+
+
 function gamePlay(){
     var round = 0;
-    for (let i = 0; i < 5; i++ ) {
+    do{
 
         console.log(`Round: ${++round}`);
         
         let compChoice = getComputerChoice();
-        let userChoice = getUserChoice('Rock, Scissors, Paper?');
+        let userChoice =getUserChoice();
         
         //user cancels out of prompt
         if(userChoice === undefined) {
@@ -142,11 +147,13 @@ function gamePlay(){
             console.log("=========================");
             console.log(" \n" ); 
         }
-        //declare wiiner after 5 rounds 
-        if(i === 5) {
-            declareWinner(playerScore,computerScore);
-        }
     }
+        //declare wiiner after 5 rounds 
+    while(i < 5);
+    declareWinner(playerScore,computerScore);
+        
+    
 }
 
 gamePlay();
+*/
