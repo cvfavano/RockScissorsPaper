@@ -38,40 +38,7 @@ imgs.forEach(img => img.addEventListener('click', (event) => {
 
 
 
- /* can delete later       
-//check if user used whitespace, emptry string, or incorrect word
-function checkUserSelection(entry) {
-    
-    //user cancels out of prompt
-    if(!entry) {
-        return;
-    }
-    let stringEntry = entry.toLowerCase().trim(); 
 
-    switch (stringEntry) {
-        case 'rock':
-         return 'rock';
-         break;
-
-        case 'paper':
-            return 'paper';
-            break;
-
-        case 'scissors':
-            return 'scissors';
-            break;
-
-        case '': 
-            getUserChoice('Please reenter choice with rock, scissors or paper only');
-            break;
-
-        default:
-            getUserChoice('Please reenter choice with rock, scissors or paper only');
-            break;
-    }
-}
-
-*/
 //compare choices of player vs computer
 
 function playRound(playerSelection, computerSelection){
