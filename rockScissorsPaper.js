@@ -51,6 +51,8 @@ beginBtn.addEventListener("click",(event) => showBoard());
 function showBoard() {
     beginBtn.style.display="none";
     document.querySelector(".board").style.display = "flex";
+
+    document.querySelector(".container.welcome").firstElementChild.style.display = "none";
 }
 
 
@@ -134,7 +136,6 @@ function gamePlay(choice){
     let userChoice = choice;
     console.log(userChoice)
     let compChoice = getComputerChoice();
-        //user cancels out of prompt
      
     console.log("\nResult: ");
         

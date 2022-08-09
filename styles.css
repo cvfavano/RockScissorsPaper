@@ -40,5 +40,8 @@ button.reset {
 }
 
 span {margin-left: 15px;}
-.begin {display: flex;}
+.begin {
+    display: flex;
+    margin: 0 auto;
+}
 .board {display: none;}
