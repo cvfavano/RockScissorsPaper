@@ -15,6 +15,10 @@ body {
 button.reset {
     display:none;
     margin: 0 auto;
+    padding: 10px;
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Special Elite', cursive;
+
 }
 
 .result {
@@ -22,11 +26,16 @@ button.reset {
    
 }
 
-.result p { margin: 0 auto;}
+.result p, .welcome { 
+    font-size: 1.5em;
+    margin: 15px auto;
+}
 
 
 .scoreboard {
-    border: 5px solid #333;
+    border: 2px solid #333;
     max-width: 250px;
     margin: 20px auto;
 }
+
+span {margin-left: 15px;}
