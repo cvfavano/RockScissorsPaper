@@ -16,3 +16,17 @@ button.reset {
     display:none;
     margin: 0 auto;
 }
+
+.result {
+    display:none;
+   
+}
+
+.result p { margin: 0 auto;}
+
+
+.scoreboard {
+    border: 5px solid #333;
+    max-width: 250px;
+    margin: 20px auto;
+}
