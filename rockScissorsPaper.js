@@ -4,6 +4,11 @@ var playerScore = 0;
 var computerScore = 0;
 var round = 0;
 
+
+function appendElement(id, text) {
+    document.querySelector(id).innerHTML ='';
+    document.querySelector(id).append(text);
+}
 //Generate random number and assign to computer choice
 function getComputerChoice()  {
     let rock;
@@ -28,25 +33,22 @@ function getComputerChoice()  {
 }
 
 //create listeners with a callback to start game play
-
 var imgs = document.querySelectorAll('div.options img');
 
-imgs.forEach(img => img.addEventListener('click', (event) => {
-        gamePlay(event.target.id);
-    })
-)
+imgs.forEach(img => img.addEventListener('click', clickHandler));
 
-
-
+function clickHandler(event) {
+    gamePlay(event.target.id);
+}
 
 //compare choices of player vs computer
-
 function playRound(playerSelection, computerSelection){
     // player 1 wins point
     if( playerSelection == 'rock' && computerSelection == 'scissors' ||
         playerSelection == 'scissors' && computerSelection == 'paper' ||
         playerSelection == 'paper' && computerSelection == 'rock' ) {
             console.log("Player 1 earns a point")
+            
             return  ++playerScore;
     }
     
@@ -68,15 +70,19 @@ function declareWinner(playerScore, computerScore){
     var winMessage = "wins best of 5!"
     
     if(playerScore > computerScore){
+        appendElement("#computer span",computerScore);
         console.log('Player ' + winMessage );
+        appendElement(".result span", "Player1!");
     }
     
     else if (computerScore > playerScore) {
         console.log('Computer ' + winMessage);
+        appendElement(".result span", "Computer");
     }
     
     else {
         console.log("It's a tie!");
+        appendElement(".result span","It's a tie!");
     }
 
     console.log(`\n *** FINAL SCORE: *** 
@@ -85,33 +91,36 @@ function declareWinner(playerScore, computerScore){
 }
 
 //Run game
-
-
 function gamePlay(choice){
     
-        console.log(`Round: ${++round}`);
-        let userChoice = choice;
-        console.log(userChoice)
-        let compChoice = getComputerChoice();
-       
-        
+    console.log(`Round: ${++round}`);
+    let userChoice = choice;
+    console.log(userChoice)
+    let compChoice = getComputerChoice();
         //user cancels out of prompt
      
-            console.log('\nResult: ');
+    console.log('\nResult: ');
         
-            playRound(userChoice, compChoice);
-            console.log(`\n Scoreboard: 
-                Player: ${playerScore}
-                Computer: ${computerScore}`)
-            console.log("=========================");
-            console.log(" \n" ); 
+    playRound(userChoice, compChoice);
+
+    appendElement("#round span",round);
+    appendElement("#player span",playerScore);
+    appendElement("#computer span",computerScore);
+    console.log(`\n Scoreboard: 
+        Player: ${playerScore}
+        Computer: ${computerScore}`)
+    console.log("=========================");
+    console.log(" \n" ); 
         
     
         //declare wiiner after 5 rounds 
-   
-    if(playerScore == 5 || computerScore ==5) {
-    declareWinner(playerScore,computerScore);
+        if(playerScore == 5 || computerScore == 5) {
+            imgs.forEach(img => img.removeEventListener('click', clickHandler));
+            declareWinner(playerScore,computerScore);
         
-    }
+        }
+   
 }
+
+
 
