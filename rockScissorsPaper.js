@@ -133,11 +133,6 @@ function gamePlay(choice){
     appendElement("#round span",round);
     appendElement("#player span",playerScore);
     appendElement("#computer span",computerScore);
-    console.log(`\n Scoreboard: 
-        Player: ${playerScore}
-        Computer: ${computerScore}`)
-    console.log("=========================");
-    console.log(" \n" ); 
         
     //declare wiiner after 5 rounds 
     if(playerScore == 5 || computerScore == 5) {
@@ -147,6 +142,3 @@ function gamePlay(choice){
         showElement(".result");
     }
 }
-
-
-
