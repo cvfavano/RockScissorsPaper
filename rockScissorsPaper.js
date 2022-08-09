@@ -71,24 +71,29 @@ function declareWinner(playerScore, computerScore){
     
     if(playerScore > computerScore){
         appendElement("#computer span",computerScore);
-        console.log('Player ' + winMessage );
         appendElement(".result span", "Player1!");
     }
     
     else if (computerScore > playerScore) {
-        console.log('Computer ' + winMessage);
         appendElement(".result span", "Computer");
     }
     
     else {
-        console.log("It's a tie!");
         appendElement(".result span","It's a tie!");
     }
-
-    console.log(`\n *** FINAL SCORE: *** 
-    Player: ${playerScore}
-    Computer: ${computerScore}`);
 }
+
+//reset button 
+function showElement(id){
+
+    const element = document.querySelector(id);
+const compStyles = window.getComputedStyle(element);
+    
+    if (compStyles.display === "none") {
+        element.style.display = "flex";
+    }
+  }
+
 
 //Run game
 function gamePlay(choice){
@@ -112,14 +117,12 @@ function gamePlay(choice){
     console.log("=========================");
     console.log(" \n" ); 
         
-    
-        //declare wiiner after 5 rounds 
-        if(playerScore == 5 || computerScore == 5) {
-            imgs.forEach(img => img.removeEventListener('click', clickHandler));
-            declareWinner(playerScore,computerScore);
-        
-        }
-   
+    //declare wiiner after 5 rounds 
+    if(playerScore == 5 || computerScore == 5) {
+        imgs.forEach(img => img.removeEventListener('click', clickHandler));
+        declareWinner(playerScore,computerScore);
+        showElement("button.reset");
+    }
 }
 
 
