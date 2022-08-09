@@ -44,6 +44,16 @@ function clickHandler(event) {
 var resetBtn = document.querySelector(".reset");
 resetBtn.addEventListener("click",(event) => clearBoard()); 
 
+var beginBtn = document.querySelector(".begin");
+
+
+beginBtn.addEventListener("click",(event) => showBoard());
+function showBoard() {
+    beginBtn.style.display="none";
+    document.querySelector(".board").style.display = "flex";
+}
+
+
 function clearBoard() {
     document.querySelector("#round span").innerHTML = "";
     document.querySelector("#computer span").innerHTML = "";

@@ -36,6 +36,9 @@ button.reset {
     border: 2px solid #333;
     max-width: 250px;
     margin: 20px auto;
+    border-radius: 4px;
 }
 
 span {margin-left: 15px;}
+.begin {display: flex;}
+.board {display: none;}
