@@ -6,7 +6,7 @@ var round = 0;
 
 
 function appendElement(id, text) {
-    document.querySelector(id).innerHTML ='';
+    document.querySelector(id).innerHTML ="";
     document.querySelector(id).append(text);
 }
 //Generate random number and assign to computer choice
@@ -19,43 +19,65 @@ function getComputerChoice()  {
 
     switch(getNumber) {
         case 1 :
-            getNumber = 'rock';
+            getNumber = "rock";
             break
         case 2:
-            getNumber = 'scissors'; 
+            getNumber = "scissors"; 
             break;
         case 3:
-            getNumber = 'paper';
+            getNumber = "paper";
             break;
     }
-    console.log('Computer picks '  + getNumber);
+    console.log("Computer picks "  + getNumber);
     return getNumber;
 }
 
-//create listeners with a callback to start game play
-var imgs = document.querySelectorAll('div.options img');
+//create listeners for images with a callback to start game play
+var imgs = document.querySelectorAll("div.options img");
 
-imgs.forEach(img => img.addEventListener('click', clickHandler));
+imgs.forEach(img => img.addEventListener("click", clickHandler));
 
 function clickHandler(event) {
     gamePlay(event.target.id);
 }
 
+var resetBtn = document.querySelector(".reset");
+resetBtn.addEventListener("click",(event) => clearBoard()); 
+
+function clearBoard() {
+    document.querySelector("#round span").innerHTML = "";
+    document.querySelector("#computer span").innerHTML = "";
+    document.querySelector("#player span").innerHTML = "";
+    document.querySelector("button.reset").style.display = "none";
+    document.querySelector(".result").style.display = "none";
+    var imgs = document.querySelectorAll("div.options img");
+
+    imgs.forEach(img => img.addEventListener("click", clickHandler));
+
+    function clickHandler(event) {
+        gamePlay(event.target.id);
+    }
+
+     playerScore = 0;
+     computerScore = 0;
+     round = 0;  
+}
+
 //compare choices of player vs computer
 function playRound(playerSelection, computerSelection){
     // player 1 wins point
-    if( playerSelection == 'rock' && computerSelection == 'scissors' ||
-        playerSelection == 'scissors' && computerSelection == 'paper' ||
-        playerSelection == 'paper' && computerSelection == 'rock' ) {
+    if( playerSelection == "rock" && computerSelection == "scissors" ||
+        playerSelection == "scissors" && computerSelection == "paper" ||
+        playerSelection == "paper" && computerSelection == "rock" ) {
             console.log("Player 1 earns a point")
             
             return  ++playerScore;
     }
     
     //comp wins
-    else if (computerSelection == 'rock' && playerSelection == 'scissors' ||
-            computerSelection == 'scissors' && playerSelection == 'paper' ||
-            computerSelection == 'paper' && playerSelection == 'rock' ) {
+    else if (computerSelection == "rock" && playerSelection == "scissors" ||
+            computerSelection == "scissors" && playerSelection == "paper" ||
+            computerSelection == "paper" && playerSelection == "rock" ) {
                 console.log("Computer earns a point")
                 return  ++computerScore;
     }    
@@ -87,7 +109,7 @@ function declareWinner(playerScore, computerScore){
 function showElement(id){
 
     const element = document.querySelector(id);
-const compStyles = window.getComputedStyle(element);
+    const compStyles = window.getComputedStyle(element);
     
     if (compStyles.display === "none") {
         element.style.display = "flex";
@@ -104,7 +126,7 @@ function gamePlay(choice){
     let compChoice = getComputerChoice();
         //user cancels out of prompt
      
-    console.log('\nResult: ');
+    console.log("\nResult: ");
         
     playRound(userChoice, compChoice);
 
@@ -119,9 +141,10 @@ function gamePlay(choice){
         
     //declare wiiner after 5 rounds 
     if(playerScore == 5 || computerScore == 5) {
-        imgs.forEach(img => img.removeEventListener('click', clickHandler));
+        imgs.forEach(img => img.removeEventListener("click", clickHandler));
         declareWinner(playerScore,computerScore);
         showElement("button.reset");
+        showElement(".result");
     }
 }
 
