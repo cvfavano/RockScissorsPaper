@@ -6,7 +6,7 @@ var round = 0;
 
 
 function appendElement(id, text) {
-    document.querySelector(id).innerHTML ="";
+    document.querySelector(id).innerHTML = "";
     document.querySelector(id).append(text);
 }
 //Generate random number and assign to computer choice
@@ -46,6 +46,9 @@ resetBtn.addEventListener("click",(event) => clearBoard());
 
 var beginBtn = document.querySelector(".begin");
 
+function clearHTML(id) {
+    document.querySelector(id).innerHTML = "";
+}
 
 beginBtn.addEventListener("click",(event) => showBoard());
 function showBoard() {
@@ -57,9 +60,9 @@ function showBoard() {
 
 
 function clearBoard() {
-    document.querySelector("#round span").innerHTML = "";
-    document.querySelector("#computer span").innerHTML = "";
-    document.querySelector("#player span").innerHTML = "";
+     clearHTML("#round span") ;
+     clearHTML("#computer span"); 
+     clearHTML("#computer span") ;
     document.querySelector("button.reset").style.display = "none";
     document.querySelector(".result").style.display = "none";
     var imgs = document.querySelectorAll("div.options img");
@@ -81,8 +84,8 @@ function playRound(playerSelection, computerSelection){
     if( playerSelection == "rock" && computerSelection == "scissors" ||
         playerSelection == "scissors" && computerSelection == "paper" ||
         playerSelection == "paper" && computerSelection == "rock" ) {
-            console.log("Player 1 earns a point")
-            
+            appendElement(".player-selection p", "Player 1 earns a point"); 
+            console.log("Player 1 earns a point");
             return  ++playerScore;
     }
     
@@ -90,12 +93,14 @@ function playRound(playerSelection, computerSelection){
     else if (computerSelection == "rock" && playerSelection == "scissors" ||
             computerSelection == "scissors" && playerSelection == "paper" ||
             computerSelection == "paper" && playerSelection == "rock" ) {
+                appendElement(".computer-selection p", "Computer earns a point");
                 console.log("Computer earns a point")
                 return  ++computerScore;
     }    
     //tie
     else {
         console.log("It's a tie!")
+        appendElement(".computer-selection p", "It's a tie");
     }
 }
 
@@ -131,7 +136,8 @@ function showElement(id){
 
 //Run game
 function gamePlay(choice){
-    
+    clearHTML(".computer-selection p") ;
+    clearHTML(".player-selection p") ;
     console.log(`Round: ${++round}`);
     let userChoice = choice;
     console.log(userChoice)
