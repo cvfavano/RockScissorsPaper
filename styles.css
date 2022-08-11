@@ -18,12 +18,15 @@ button.reset {
     padding: 10px;
     font-family: 'Open Sans', sans-serif;
     font-family: 'Special Elite', cursive;
+}
 
+img {
+    padding: 10px;
+    margin: 10px;
 }
 
 .result {
-    display:none;
-   
+    display:none;  
 }
 
 .result p, .welcome { 
@@ -31,17 +34,45 @@ button.reset {
     margin: 15px auto;
 }
 
-
 .scoreboard {
-    border: 2px solid #333;
+    border: 1px solid #555;
     max-width: 250px;
-    margin: 20px auto;
     border-radius: 4px;
+    margin: 0 auto;
 }
 
-span {margin-left: 15px;}
+span {
+    margin-left: 15px;
+}
+
 .begin {
     display: flex;
     margin: 0 auto;
 }
-.board {display: none;}
+
+.board {
+    display: none;
+}
+
+.board-container {
+    border:1px solid #555;
+    max-width: 500px;
+    margin: 0 auto;
+    border-radius: 4px;
+}
+
+.player-board  {
+    display: flex;
+    justify-content: center;
+    border: 1px solid #555;
+    max-width: 400px;
+    margin: 30px auto;
+    padding: 30px;
+    border-radius: 4px;
+}
+
+.player-board div {
+    display: flex;
+    flex-direction: column;
+}
+
