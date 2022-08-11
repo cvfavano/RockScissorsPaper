@@ -85,7 +85,8 @@ function playRound(playerSelection, computerSelection){
     if( playerSelection == "rock" && computerSelection == "scissors" ||
         playerSelection == "scissors" && computerSelection == "paper" ||
         playerSelection == "paper" && computerSelection == "rock" ) {
-            appendElement(".round-comment p", "Player 1 earns a point"); 
+            appendElement(".round-comment p", "Player 1 earns a point");
+            animateWin("player", "green"); 
             return  ++playerScore;
     }
     
@@ -94,6 +95,7 @@ function playRound(playerSelection, computerSelection){
             computerSelection == "scissors" && playerSelection == "paper" ||
             computerSelection == "paper" && playerSelection == "rock" ) {
                 appendElement(".round-comment p", "Computer earns a point");
+                animateWin("computer", "green");
                 return  ++computerScore;
     }    
     //tie
@@ -107,7 +109,6 @@ function declareWinner(playerScore, computerScore){
     var winMessage = "wins best of 5!"
 
     if(playerScore > computerScore){
-        appendElement("#computer span",computerScore);
         appendElement(".round-comment p", "Player1 wins!");
     }
     
@@ -129,13 +130,22 @@ function showElement(id){
         element.style.display = "flex";
     }
   }
+function animateWin(winner, color){
+    const score = document.querySelector(`.${winner}-pick .turn-result`);
+    const answer = document.querySelector(`#${winner} span`);
 
+    score.style.color = color;
+    answer.style.color = color;
+}
 
 //Run game
 function gamePlay(choice){
     ++round;
 
-    clearHTML(".round-comment p") ;
+    clearHTML(".round-comment p");
+    animateWin("player", "black");
+    animateWin("computer", "black");
+
     let userChoice = choice;
     let compChoice = getComputerChoice();
          
@@ -145,7 +155,8 @@ function gamePlay(choice){
     appendElement("#round span",round);
     appendElement("#player span",playerScore);
     appendElement("#computer span",computerScore);
-        
+    
+
     //declare wiiner after 5 rounds 
     if(playerScore == 5 || computerScore == 5) {
         imgs.forEach(img => img.removeEventListener("click", clickHandler));

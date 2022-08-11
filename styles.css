@@ -96,12 +96,12 @@ span {
 }
 
 .turn-result {
-    border-top:1px solid;
+    border-top:1px solid black;
     padding-top: 37px;
 }
 
 .player-pick {
-    border-right: 1px solid;
+    border-right: 1px solid black;
     min-height: 184px;
 }
 
