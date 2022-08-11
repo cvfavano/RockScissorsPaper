@@ -32,7 +32,7 @@ function getComputerChoice()  {
 }
 
 //create listeners for images with a callback to start game play
-var imgs = document.querySelectorAll("div.player-pick img");
+var imgs = document.querySelectorAll("div.player-options img");
 
 imgs.forEach(img => img.addEventListener("click", clickHandler));
 
@@ -66,9 +66,8 @@ function clearBoard() {
     clearHTML("#computer span"); 
     clearHTML("#player span") ;
     document.querySelector("button.reset").style.display = "none";
-    document.querySelector(".result").style.display = "none";
     
-    var imgs = document.querySelectorAll("div.player-pick img");
+    var imgs = document.querySelectorAll("div.player-options img");
 
     imgs.forEach(img => img.addEventListener("click", clickHandler));
 
@@ -132,12 +131,15 @@ function showElement(id){
 
 //Run game
 function gamePlay(choice){
+    ++round;
+
     clearHTML(".round-comment p") ;
     let userChoice = choice;
     let compChoice = getComputerChoice();
          
     playRound(userChoice, compChoice);
     appendElement(".computer-pick .turn-result", compChoice);
+    appendElement(".player-pick .turn-result", userChoice);
     appendElement("#round span",round);
     appendElement("#player span",playerScore);
     appendElement("#computer span",computerScore);

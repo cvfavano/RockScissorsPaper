@@ -2,6 +2,7 @@ body {
     font-family: 'Open Sans', sans-serif;
     font-family: 'Special Elite', cursive;
     text-align: center;
+    background: url('./images/bg.jpg');
 }
 
 .row {
@@ -35,7 +36,6 @@ img {
 }
 
 .scoreboard {
-    border: 1px solid #555;
     max-width: 250px;
     border-radius: 4px;
     margin: 0 auto;
@@ -46,8 +46,11 @@ span {
 }
 
 .begin {
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Special Elite', cursive;
     display: flex;
     margin: 0 auto;
+    padding: 10px;
 }
 
 .board {
@@ -55,24 +58,47 @@ span {
 }
 
 .board-container {
-    border:1px solid #555;
     max-width: 500px;
     margin: 0 auto;
+    padding: 20px;
     border-radius: 4px;
+    background: #fff;
 }
 
 .player-board  {
     display: flex;
     justify-content: center;
-    border: 1px solid #555;
     max-width: 400px;
     margin: 30px auto;
     padding: 30px;
     border-radius: 4px;
 }
 
-.player-board div {
+.player-board .computer-pick,
+.player-board .player-pick  {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; 
+    flex-basis: 40%;
+}
+
+.player-options {
+    flex-direction: row;
+
+    flex-basis: 100%;
+    width: 100%
+}
+
+.round-comment {
+    min-height: 85px;
+}
+
+.turn-result {
+    border-top:1px solid;
+    padding-top: 37px;
+}
+
+.player-pick {
+    border-right: 1px solid;
+    min-height: 184px;
 }
 
