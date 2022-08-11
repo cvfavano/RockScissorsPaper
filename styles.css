@@ -25,7 +25,10 @@ img {
     padding: 10px;
     margin: 10px;
 }
-
+img:hover{
+    transform: scale(1.1,1.1);
+    transition:all .5s ease-in-out; ;
+}
 .result {
     display:none;  
 }
@@ -84,7 +87,6 @@ span {
 
 .player-options {
     flex-direction: row;
-
     flex-basis: 100%;
     width: 100%
 }
