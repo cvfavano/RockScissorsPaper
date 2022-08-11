@@ -1,5 +1,3 @@
-var computerChoice;
-var playerChoice;
 var playerScore = 0;
 var computerScore = 0;
 var round = 0;
@@ -32,7 +30,7 @@ function getComputerChoice()  {
 }
 
 //create listeners for images with a callback to start game play
-var imgs = document.querySelectorAll("div.player-options img");
+const imgs = document.querySelectorAll("div.player-options img");
 
 imgs.forEach(img => img.addEventListener("click", clickHandler));
 
@@ -40,10 +38,10 @@ function clickHandler(event) {
     gamePlay(event.target.id);
 }
 
-var resetBtn = document.querySelector(".reset");
+const resetBtn = document.querySelector(".reset");
 resetBtn.addEventListener("click",(event) => clearBoard()); 
 
-var beginBtn = document.querySelector(".begin");
+const beginBtn = document.querySelector(".begin");
 
 function clearHTML(id) {
     document.querySelector(id).innerHTML = "";
@@ -64,12 +62,15 @@ function clickHandler(event) {
 function clearBoard() {
     clearHTML("#round span") ;
     clearHTML("#computer span"); 
-    clearHTML("#player span") ;
-    clearHTML(".round-comment p") ;
+    clearHTML("#player span");
+    clearHTML(".round-comment p");
+    clearHTML(".computer-pick .turn-result p");
+    clearHTML(".player-pick .turn-result p");
+
     appendElement(".round-comment p", "Play Best of 5. Click on rock, paper, scissors below to begin")
     document.querySelector("button.reset").style.display = "none";
     
-    var imgs = document.querySelectorAll("div.player-options img");
+    const imgs = document.querySelectorAll("div.player-options img");
 
     imgs.forEach(img => img.addEventListener("click", clickHandler));
 
@@ -89,24 +90,26 @@ function playRound(playerSelection, computerSelection){
             animateWin("player", "green"); 
             return  ++playerScore;
     }
-    
-    //comp wins
-    else if (computerSelection == "rock" && playerSelection == "scissors" ||
-            computerSelection == "scissors" && playerSelection == "paper" ||
-            computerSelection == "paper" && playerSelection == "rock" ) {
-                appendElement(".round-comment p", "Computer earns a point");
-                animateWin("computer", "green");
-                return  ++computerScore;
-    }    
-    //tie
-    else {
+
+     //comp wins
+     else if (computerSelection == "rock" && playerSelection == "scissors" ||
+     computerSelection == "scissors" && playerSelection == "paper" ||
+     computerSelection == "paper" && playerSelection == "rock" ) {
+        appendElement(".round-comment p", "Computer earns a point");
+         animateWin("computer", "green");
+         return  ++computerScore;
+    }
+
+     //tie
+     else if(computerSelection == playerSelection){
         appendElement(".round-comment p", "It's a tie");
+        return;
     }
 }
 
 // compare scores and declare winner
 function declareWinner(playerScore, computerScore){
-    var winMessage = "wins best of 5!"
+    const winMessage = "wins best of 5!"
 
     if(playerScore > computerScore){
         appendElement(".round-comment p", "Player1 wins!");
@@ -140,18 +143,19 @@ function animateWin(winner, color){
 
 //Run game
 function gamePlay(choice){
+
     ++round;
 
     clearHTML(".round-comment p");
     animateWin("player", "black");
     animateWin("computer", "black");
 
-    let userChoice = choice;
-    let compChoice = getComputerChoice();
+    const userChoice = choice;
+    const compChoice = getComputerChoice();
          
     playRound(userChoice, compChoice);
-    appendElement(".computer-pick .turn-result", compChoice);
-    appendElement(".player-pick .turn-result", userChoice);
+    appendElement(".computer-pick .turn-result p", compChoice);
+    appendElement(".player-pick .turn-result p", userChoice);
     appendElement("#round span",round);
     appendElement("#player span",playerScore);
     appendElement("#computer span",computerScore);
