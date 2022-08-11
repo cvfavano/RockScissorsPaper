@@ -66,6 +66,7 @@ function clearBoard() {
     clearHTML("#computer span"); 
     clearHTML("#player span") ;
     clearHTML(".round-comment p") ;
+    appendElement(".round-comment p", "Play Best of 5 <br> Click on rock, paper, scissors below to begin")
     document.querySelector("button.reset").style.display = "none";
     
     var imgs = document.querySelectorAll("div.player-options img");
