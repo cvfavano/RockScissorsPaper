@@ -65,6 +65,7 @@ function clearBoard() {
     clearHTML("#round span") ;
     clearHTML("#computer span"); 
     clearHTML("#player span") ;
+    clearHTML(".round-comment p") ;
     document.querySelector("button.reset").style.display = "none";
     
     var imgs = document.querySelectorAll("div.player-options img");
